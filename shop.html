@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <title>Gameshop</title>
+        <style>
+            html, body {
+                background: #42425A;
+                font-family: Arial;
+                font-size: 16px;
+                color: white;
+            }
+
+            main {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+            }
+
+            .shop {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                flex-direction: column;
+                height: 24rem;
+            }
+
+            .gamecard {
+                background: #A35555;
+                color: white;
+                font-size: 2rem;
+                text-decoration: none;
+                padding: 1rem;
+                border-radius: 0.3rem;
+                transition: all 0.4s;
+            }
+
+            .gamecard:hover {
+                color: white;
+                transform: scale(1.1);
+            }
+
+            h1 {
+                margin: 0rem;
+            }
+
+            strong {
+                margin-bottom: 3rem;
+            }
+        </style>
+    </head>
+    <body>
+        <main>
+            <div class="shop">
+                <h1>Gameshop</h1>
+                <strong>Choose a game, create a room/instance and take <br/>it to your group at any table.</strong>
+                    <a href="https://codenames.game/" class="gamecard">
+                    Codenames
+                </a>
+                <a href="https://tabletopia.com/games" class="gamecard">
+                    Tabletopia
+                </a>
+                <a href="https://skribbl.io/" class="gamecard">
+                    Skribbl.io
+                </a>
+            </div>
+        </main>
+    </body>
+</html>
