@@ -404,7 +404,7 @@
                  "y":0
                 }],
          "name":"rooms",
-         "opacity":0.37,
+         "opacity":0,
          "type":"group",
          "visible":true,
          "x":0,
