@@ -26,3 +26,22 @@ function closePopUp(){
         currentPopup = undefined;
     }
 }
+
+
+WA.room.onEnterZone('communityspace', () => {
+    currentPopup =  WA.ui.openPopup("livestream", ".", []);
+})
+
+WA.room.onLeaveZone('nyan', closePopUp)
+
+WA.room.onLeaveZone('communityspace', closePopUp)
+
+WA.room.onEnterZone('secret_trigger', () => {
+    WA.room.hideLayer('secret_door_outside');
+})
+
+WA.room.onLeaveZone('secret_trigger', () => {
+    setTimeout(() => {
+        WA.room.showLayer('secret_door_outside');
+    }, 2000)
+})
