@@ -5,7 +5,7 @@ import { bootstrapExtra } from "@workadventure/scripting-api-extra";
 // The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure.
 bootstrapExtra().catch(e => console.error(e));
 
-WA.chat.sendChatMessage('Hello world', 'Mr Robot');
+
 
 
 let currentPopup: any = undefined;
@@ -44,4 +44,12 @@ WA.room.onLeaveZone('secret_trigger', () => {
     setTimeout(() => {
         WA.room.showLayer('secret_door_outside');
     }, 2000)
+})
+// WA.chat.sendChatMessage('Hello world', 'Mr Robot');
+
+WA.room.onEnterZone('gotoholzmarkt', () => {
+    console.log('WA.player.name', WA.player.name)
+    if(WA.player.name === 'gigagiga') {
+        WA.nav.goToRoom('holzmarkt.json');
+    }
 })
