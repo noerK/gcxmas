@@ -66,7 +66,7 @@ WA.onInit().then(async () => {
         if (nowInt <= eventInt) {
             WA.chat.sendChatMessage('Join the GCXMAS Quiz! https://sli.do/v5B13dcujvVXbgmabj6rgN', 'Santa');
         } else {
-            WA.chat.sendChatMessage('Go down the stairs to play games. https://play.workadventu.re/@/grandcentrix/grandcentrix/games', 'Santa');
+            WA.chat.sendChatMessage('Go down the stairs to play games.', 'Santa');
         }
     })
 
@@ -111,6 +111,10 @@ WA.onInit().then(async () => {
             isProd ? WA.nav.goToRoom('/@/grandcentrix/grandcentrix/holzmarkt') : WA.nav.goToRoom('holzmarkt.json');
 
         }
+    })
+
+    WA.room.onEnterZone('gotogames', () => {
+        isProd ? WA.nav.goToRoom('/@/grandcentrix/grandcentrix/games') : WA.nav.goToRoom('games.json');
     })
 
     if (isProd) {
