@@ -12,7 +12,7 @@ bootstrapExtra().catch(e => console.error(e));
 let currentPopup: any = undefined;
 const now = new Date();
 const stream = new Date('December 16, 2021 16:30:00');
-const event = new Date('December 16, 2021 14:30:00');
+const event = new Date('December 16, 2021 18:30:00');
 
 const nowString = now.getHours() + ":" + now.getMinutes();
 const nowInt = now.getTime();
