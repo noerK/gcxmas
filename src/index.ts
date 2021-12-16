@@ -34,8 +34,6 @@ WA.room.onEnterZone('communityspace', () => {
 
 WA.room.onLeaveZone('nyan', closePopUp)
 
-WA.room.onLeaveZone('communityspace', closePopUp)
-
 WA.room.onEnterZone('secret_trigger', () => {
     WA.room.hideLayer('secret_door_outside');
 })
@@ -45,7 +43,28 @@ WA.room.onLeaveZone('secret_trigger', () => {
         WA.room.showLayer('secret_door_outside');
     }, 2000)
 })
-// WA.chat.sendChatMessage('Hello world', 'Mr Robot');
+
+const doors = [
+    'elevator_door_1',
+    'elevator_door_2',
+    'meeting_door_1',
+    'meeting_door_2',
+    'meeting_door_3',
+    'main_door_1'
+];
+for (const door of doors) {
+    WA.room.onEnterZone(door, () => {
+        WA.room.hideLayer(`level/${door}`);
+    })
+
+    WA.room.onLeaveZone(door, () => {
+        WA.room.showLayer(`level/${door}`);
+    })
+}
+
+
+
+WA.chat.sendChatMessage('Join the GCXMAS Quiz! https://sli.do/v5B13dcujvVXbgmabj6rgN', 'Santa');
 
 WA.room.onEnterZone('gotoholzmarkt', () => {
     console.log('WA.player.name', WA.player.name)
@@ -53,3 +72,9 @@ WA.room.onEnterZone('gotoholzmarkt', () => {
         WA.nav.goToRoom('holzmarkt.json');
     }
 })
+
+
+const menu = WA.ui.registerMenuCommand('Preise',
+    {
+        iframe: 'shop.html'
+    })
