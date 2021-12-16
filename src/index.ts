@@ -9,16 +9,22 @@ bootstrapExtra().catch(e => console.error(e));
 
 
 let currentPopup: any = undefined;
-const today = new Date();
-const time = today.getHours() + ":" + today.getMinutes();
+const now = new Date();
+const stream = new Date('December 16, 2021 16:30:00');
+const event = new Date('December 16, 2021 18:30:00');
+
+const nowString = now.getHours() + ":" + now.getMinutes();
+const nowInt = now.getTime();
+const streamInt = stream.getTime();
+const eventInt = event.getTime();
 
 
 
-WA.room.onEnterZone('nyan', () => {
-    currentPopup =  WA.ui.openPopup("clockPopup","It's " + time,[]);
+WA.room.onEnterZone('nyan2', () => {
+    currentPopup =  WA.ui.openPopup("clockPopup","It's " + nowString,[]);
 })
 
-WA.room.onLeaveZone('nyan', closePopUp)
+WA.room.onLeaveZone('nyan2', closePopUp)
 
 function closePopUp(){
     if (currentPopup !== undefined) {
@@ -29,10 +35,8 @@ function closePopUp(){
 
 
 WA.room.onEnterZone('communityspace', () => {
-    currentPopup =  WA.ui.openPopup("livestream", ".", []);
+    WA.chat.sendChatMessage('Join the GCXMAS Quiz! https://sli.do/v5B13dcujvVXbgmabj6rgN', 'Santa');
 })
-
-WA.room.onLeaveZone('nyan', closePopUp)
 
 WA.room.onEnterZone('secret_trigger', () => {
     WA.room.hideLayer('secret_door_outside');
@@ -64,14 +68,22 @@ for (const door of doors) {
 
 
 
-WA.chat.sendChatMessage('Join the GCXMAS Quiz! https://sli.do/v5B13dcujvVXbgmabj6rgN', 'Santa');
+
 
 WA.room.onEnterZone('gotoholzmarkt', () => {
-    console.log('WA.player.name', WA.player.name)
-    if(WA.player.name === 'gigagiga') {
+    if(WA.player.name.match(/giga/gi) || nowInt >= streamInt) {
         WA.nav.goToRoom('holzmarkt.json');
     }
 })
+
+WA.onInit().then(() => {
+    const countdownHours = (streamInt - nowInt) / 3600000
+    for (let i = 5; i > 0; i--) {
+        if (countdownHours < i) {
+            WA.room.hideLayer(`countdown/${i}`);
+        }
+    }
+});
 
 
 const menu = WA.ui.registerMenuCommand('Preise',
