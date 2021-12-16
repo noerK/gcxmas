@@ -28,6 +28,11 @@ const party = () => {
         partyLights();
         WA.room.hideLayer(`rooms/room_presentation1`);
         WA.room.showLayer(`rooms/party`);
+        WA.room.setProperty('rooms/room_presentation1', 'openWebsite', undefined);
+        WA.room.setProperty('rooms/party', 'openWebsite', 'https://www.youtube.com/embed/9UMxZofMNbA');
+    } else {
+        WA.room.setProperty('rooms/room_presentation1', 'openWebsite', 'https://www.youtube.com/embed/BLcFy-0pDxY');
+        WA.room.setProperty('rooms/party', 'openWebsite', undefined);
     }
 }
 
@@ -57,23 +62,11 @@ WA.onInit().then(async () => {
     //     iframe: 'shop.html'
     // })
 
-    WA.room.onEnterZone('nyan2', () => {
-        currentPopup = WA.ui.openPopup("clockPopup", "It's " + nowString, []);
-    })
-
-    WA.room.onLeaveZone('nyan2', closePopUp)
-
-    function closePopUp() {
-        if (currentPopup !== undefined) {
-            currentPopup.close();
-            currentPopup = undefined;
-        }
-    }
-
-
     WA.room.onEnterZone('communityspace', () => {
         if (nowInt <= eventInt) {
             WA.chat.sendChatMessage('Join the GCXMAS Quiz! https://sli.do/v5B13dcujvVXbgmabj6rgN', 'Santa');
+        } else {
+            WA.chat.sendChatMessage('Go down the stairs to play games. https://play.workadventu.re/@/grandcentrix/grandcentrix/games', 'Santa');
         }
     })
 
