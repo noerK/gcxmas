@@ -454,7 +454,7 @@
          "height":50,
          "id":7,
          "name":"pathing",
-         "opacity":0.32,
+         "opacity":0,
          "type":"tilelayer",
          "visible":true,
          "width":60,
