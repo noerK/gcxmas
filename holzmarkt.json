@@ -743,21 +743,6 @@
          "opacity":1,
          "properties":[
                 {
-                 "name":"openWebsite",
-                 "type":"string",
-                 "value":"https:\/\/play.workadventu.re\/@\/grandcentrix\/grandcentrix\/games"
-                }, 
-                {
-                 "name":"openWebsiteTrigger",
-                 "type":"string",
-                 "value":"onaction"
-                }, 
-                {
-                 "name":"openWebsiteTriggerMessage",
-                 "type":"string",
-                 "value":"Want to play some games? Press <space>"
-                }, 
-                {
                  "name":"zone",
                  "type":"string",
                  "value":"gotogames"
