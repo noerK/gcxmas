@@ -9,9 +9,6 @@ import {
 // The line below bootstraps the Scripting API Extra library that adds a number of advanced properties/features to WorkAdventure.
 bootstrapExtra().catch(e => console.error(e));
 
-
-
-
 let currentPopup: any = undefined;
 const now = new Date();
 const stream = new Date('December 16, 2021 16:30:00');
@@ -22,10 +19,33 @@ const nowInt = now.getTime();
 const streamInt = stream.getTime();
 const eventInt = event.getTime();
 
+let interval;
+let partyTimer;
 
 
+const party = () => {
+    if (nowInt >= eventInt) {
+        partyLights();
+        WA.room.hideLayer(`rooms/room_presentation1`);
+        WA.room.showLayer(`rooms/party`);
+    }
+}
+
+const partyLights = (light = 1) => {
+    WA.room.hideLayer(`partylights/1`);
+    WA.room.hideLayer(`partylights/2`);
+    WA.room.hideLayer(`partylights/3`);
+    WA.room.showLayer(`partylights/${light}`);
+    const newLight = light <= 2 ? light + 1 : 1
+    partyTimer = setTimeout(() => { partyLights(newLight);}, 1000)
+}
 
 WA.onInit().then(async () => {
+    WA.room.hideLayer(`partylights/1`);
+    WA.room.hideLayer(`partylights/2`);
+    WA.room.hideLayer(`partylights/3`);
+    WA.room.hideLayer(`rooms/party`);
+
     const countdownHours = (streamInt - nowInt) / 3600000
     for (let i = 5; i > 0; i--) {
         if (countdownHours < i) {
@@ -33,10 +53,9 @@ WA.onInit().then(async () => {
         }
     }
 
-    const menu = WA.ui.registerMenuCommand('Preise', {
-        iframe: 'shop.html'
-    })
-
+    // const menu = WA.ui.registerMenuCommand('Preise', {
+    //     iframe: 'shop.html'
+    // })
 
     WA.room.onEnterZone('nyan2', () => {
         currentPopup = WA.ui.openPopup("clockPopup", "It's " + nowString, []);
@@ -53,8 +72,17 @@ WA.onInit().then(async () => {
 
 
     WA.room.onEnterZone('communityspace', () => {
-        WA.chat.sendChatMessage('Join the GCXMAS Quiz! https://sli.do/v5B13dcujvVXbgmabj6rgN', 'Santa');
+        if (nowInt <= eventInt) {
+            WA.chat.sendChatMessage('Join the GCXMAS Quiz! https://sli.do/v5B13dcujvVXbgmabj6rgN', 'Santa');
+        }
     })
+
+    party()
+    interval = setInterval(() => {
+        party()
+    }, 10000)
+
+
 
     WA.room.onEnterZone('secret_trigger', () => {
         WA.room.hideLayer('secret_door_outside');
