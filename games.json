@@ -291,6 +291,11 @@
                  "name":"exitUrl",
                  "type":"string",
                  "value":"holzmarkt.json#stairs"
+                }, 
+                {
+                 "name":"exitUrlProd",
+                 "type":"string",
+                 "value":"\/@\/grandcentrix\/grandcentrix\/holzmarkt#stairs"
                 }],
          "type":"tilelayer",
          "visible":true,

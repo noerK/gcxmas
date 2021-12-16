@@ -726,6 +726,11 @@
                  "name":"exitUrl",
                  "type":"string",
                  "value":"games.json"
+                }, 
+                {
+                 "name":"exitUrlProd",
+                 "type":"string",
+                 "value":"\/@\/grandcentrix\/grandcentrix\/games"
                 }],
          "type":"tilelayer",
          "visible":true,
