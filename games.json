@@ -371,7 +371,7 @@
                  "y":0
                 }],
          "name":"rooms",
-         "opacity":0.22,
+         "opacity":0,
          "type":"group",
          "visible":true,
          "x":0,
